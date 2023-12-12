@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Army</title>
+    <link rel="icon" type="image/x-icon" href="resources/NLNG_Logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/jquery.dataTables.min.js"></script>
+    <script src="scripts/jquery.lettering.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+         
+    <script src="scripts/dataTables.buttons.min.js"></script>
+		<script src="scripts/buttons.html5.min.js"></script>
+		<script src="scripts/jszip.min.js"></script>   
+     
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rowdetails.css">
+    <link rel="stylesheet" href="css/clickable.css">    	
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="css/buttons.dataTables.min.css">   
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> 
+
+  </head>
+  <body style="background-image: url('resources/armyBgd.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; font-family: 'Futura Bk BT'; color: silver; font-size: 10pt;">
+    <div class="topBar">&nbsp;
+      <a href="http://wapp-bny.nlng.net/digitalarmy/index.html"><i title="Homepage" style="cursor: pointer;" class="fas fa-home"></i></a>
+      &nbsp;<span>Digital Army Leaderboard</span>
+      <div style="margin-right: 10px; float: right; margin-top: -10px;"><img src="resources/NLNG_Logo.png" width="40" height="40"></div>
+    </div>
+		<br><br><br>
+
+    <div id="container" style="width: 1275px; margin-right: auto; margin-left: auto; margin-top: 50px; color: black; font-size: 14pt; font-weight: bold; display: none;">
+      <div style="width: 1275px; height: 60px; color: white;">
+        <div style="width: 150px; background-color: none; height: 60px; text-align: center; padding-top: 15px; float: left; margin-left: 15px;">RANK</div>
+        <div style="width: 500px; background-color: none; height: 60px; text-align: center; padding-top: 15px; float: left; margin-left: 15px;">NAME</div>
+        <div style="width: 150px; background-color: none; height: 60px; text-align: center; padding-top: 15px; float: left; margin-left: 15px;">POINTS</div>
+        <div style="width: 400px; background-color: none; height: 60px; text-align: center; padding-top: 15px; float: left; margin-left: 15px;">LEVEL</div>
+      </div>
+      <div style="width: 1275px; margin-top: -25px;">
+       <span id="leaderList"></span>
+      </div>
+    </div>
+     
+    <div id="loading" style="position:fixed; top:0;left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7);margin:auto;">
+      <div  class="loader" style="text-align:center;margin:auto; margin-top:450px;"></div>
+    </div>
+
+    <script src="scripts/armyLeague.js"></script>
+    <script src="scripts/getData.js"></script>
+    <script src="scripts/postData.js"></script>
+  </body>
+</html>

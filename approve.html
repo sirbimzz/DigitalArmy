@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Army</title>
+    <link rel="icon" type="image/x-icon" href="resources/NLNG_Logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+
+
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/jquery.dataTables.min.js"></script>
+    <script src="scripts/jquery.lettering.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+         
+    <script src="scripts/dataTables.buttons.min.js"></script>
+		<script src="scripts/buttons.html5.min.js"></script>
+		<script src="scripts/jszip.min.js"></script>   
+     
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rowdetails.css">
+    <link rel="stylesheet" href="css/clickable.css">    	
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="css/buttons.dataTables.min.css">   
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> 
+
+  </head>
+  <body style="background-image: url('resources/armyBgd.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; font-family: 'Futura Bk BT'; color: black; font-size: 12pt;">
+    <div class="topBar">&nbsp;
+      <a href="http://wapp-bny.nlng.net/digitalarmy/index.html"><i title="Homepage" style="cursor: pointer;" class="fas fa-home"></i></a>
+      &nbsp;<span id="selComm"></span>
+      <div style="margin-right: 10px; float: right; margin-top: -10px;"><img src="resources/NLNG_Logo.png" width="40" height="40"></div>
+      <i title="Pending Claims" class="fas fa-bell" style="color: grey; float: right; margin-left: 0px; margin-right: 20px; padding-top: 3px;"><span id="notify" class="badge2">0</span></i>
+      <a href="http://wapp-bny.nlng.net/digitalarmy/members.html">
+        <i title="Members' List" class="fas fa-users" style="cursor: pointer; float: right; margin-left: 0px; margin-right: 20px; padding-top: 3px;"></i>
+      </a>
+    </div>
+			<br><br><br>
+
+      <div id="container" style="display: none;">
+        <div id="commList" style="margin-left: auto; margin-right: auto; width: 1000px; display: none;">
+          <div>
+            <div style="float: left;">
+              <span style="color: white;">Select Community: </span>
+              <span id="commOptions"></span>
+            </div>
+            <div class="btns" id="btn1" style="float: right;" onclick="showCol0()" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Award Points</div>
+            <div class="btns" id="btn3" onclick="hideCol0()" style="display: none; background-color: orange; float: right; border: 3px solid orange;" onmouseover="this.style.background = 'none'; this.style.color = 'orange'" onmouseout="this.style.background = 'orange'; this.style.color = 'white'">Cancel</div>
+            <div class="btns" id="btn2" onclick="document.getElementById('id01').style.display='block'" style="display: none; float: right; margin-right: 10px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Award Selected</div>
+          </div><br><br>
+          <div>
+            <table id="comMembers"></table>
+          </div>
+        </div>
+  
+        <div id="actionList" style="margin-left: auto; margin-right: auto; width: 1350px; display: block;">
+          <div>
+            <span style="color: white;">Select Community: </span>
+            <span id="commOptions2"></span>
+          </div><br>
+          <div>
+            <table id="pendingList"></table>
+          </div>
+        </div>
+      </div>
+
+      <div id="id03" class="modal" style="display: none;"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 310px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Approve Points Claim</span>
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <span>Points Awarded: </span>
+            <input type="number" id="Points_Earned"><br><br>
+            <div class="btns" onclick="approvePoints()" style="float: right; margin-right: 20px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Approve</div>
+          </div>
+          <br><br>
+        </form>
+      </div>
+
+      <div id="id02" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 260px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Decline Points Claim</span>
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <span>Reason for Decline: </span>
+            <textarea id="Decline_Reason" rows="2" cols="30"></textarea><br><br>
+            <div class="btns" onclick="declinePoints()" style="float: right; margin-right: 20px; background: red; border: 3px solid red;" onmouseover="this.style.background = 'none'; this.style.color = 'red'" onmouseout="this.style.background = 'red'; this.style.color = 'white'">Decline</div>
+          </div>
+          <br><br>
+        </form>
+      </div>
+
+      <div id="id01" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 330px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Award Points to Selected Members</span>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <table>
+              <tr>
+                <td><span>Reason for Award: </span></td>
+                <td><textarea id="awardReason" rows="2" cols="20"></textarea></td>
+              </tr>
+              <tr>
+                <td><span>Points Awarded: </span></td>
+                <td><input type="number" id="Points_Earned2"></td>
+              </tr>
+              <tr>
+                <td><span></span></td>
+                <td>
+                  <div class="btns" onclick="approvePoints2()" style="float: right; margin-right: 0px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Approve</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="loading" style="position:fixed; top:0;left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7);margin:auto;">
+        <div  class="loader" style="text-align:center;margin:auto; margin-top:450px;"></div>
+      </div>
+
+      <div id="error" style="position:fixed; top:0;left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7);margin:auto; display: none;">
+    		<div style="font-size:28pt; color:red; font-family:'Futura Bk BT'; width:800px;height:40px;text-align:center;margin:auto; margin-top:150px;">You are not authorized to view this page</div>
+    	</div>
+
+    <script src="scripts/approve.js"></script>
+    <script src="scripts/getData.js"></script>
+    <script src="scripts/postData.js"></script>
+    <script src="scripts/sendMail.js"></script>
+  </body>
+</html>

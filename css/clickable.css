@@ -1,0 +1,13 @@
+﻿.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  background-color: #d3d3d3;
+  fill: #d3d3d3;
+}
+
+.clickable+text,
+.clickable+text+text {
+  pointer-events: none;
+}

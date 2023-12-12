@@ -1,0 +1,18 @@
+﻿tr.hide td.details-control {
+    background: url('http://intranet.nlng.com/pe/pei/datacentric/promotion/resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('http://intranet.nlng.com/pe/pei/datacentric/promotion/resources/details_close.png') no-repeat center center;
+    cursor: pointer;
+}
+
+
+.showRow {
+    background: url('http://intranet.nlng.com/pe/pei/datacentric/promotion/resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+.hideRow {
+    background: url('http://intranet.nlng.com/pe/pei/datacentric/promotion/resources/details_close.png') no-repeat center center;
+    cursor: pointer;
+}

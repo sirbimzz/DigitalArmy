@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Army</title>
+    <link rel="icon" type="image/x-icon" href="resources/NLNG_Logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+
+
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/moment.min.js"></script>
+    <script src="scripts/jquery.dataTables.min.js"></script>
+    <script src="scripts/jquery.lettering.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+         
+    <script src="scripts/dataTables.buttons.min.js"></script>
+		<script src="scripts/buttons.html5.min.js"></script>
+		<script src="scripts/jszip.min.js"></script>   
+     
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/rowdetails.css">
+    <link rel="stylesheet" href="css/clickable.css">    	
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="css/buttons.dataTables.min.css">   
+    <link rel="stylesheet" href="fontawesome/css/all.min.css"> 
+
+  </head>
+  <!--body class="w3-light-grey"></body-->
+  <body style="background-image: url('resources/armyBgd.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed; font-family: 'Futura Bk BT'; color: black; font-size: 12pt;">
+    <div class="topBar">&nbsp;<i class="fas fa-home"></i>&nbsp;NLNG Digital Army
+      <!--div style="width: 70px; height:50px; float: right; margin-right: 20px; background: white; margin-top: -10px;"></div-->
+      <div style="margin-right: 10px; float: right; margin-top: -10px;"><img src="resources/NLNG_Logo.png" width="40" height="40"></div>
+      <i title="View Profile" onclick="showProfile()" class="fas fa-user" style="cursor: pointer; float: right; margin-left: 10px; margin-right: 20px; padding-top: 3px;"></i>
+      <a href="http://wapp-bny.nlng.net/digitalarmy/members.html"><i id="adminIcon" title="Admin Page" class="fas fa-user-shield" style="display: none; cursor: pointer; float: right; margin-left: 10px; margin-right: 10px; padding-top: 3px;"></i></a>
+    </div>
+    <br><br><br><br>
+
+      <div id="container" style="display: none; width: 1670px; height: 1000px; margin-left: auto; margin-right: auto; border: 0px solid black; font-family: Futura Md BT;">
+        <div style="float: left; width: 800px;">
+          <div style="width: 800px; height: 400px; border: 0px solid black; ">
+            <div id="emblem" style="background-image: url('resources/banner.jpg'); background-repeat: no-repeat; background-size: cover; background-color: silver; border-top-left-radius: 15px; border-top-right-radius: 15px; width: 800px; height: 150px;">
+              <div class="circle" style="border-color: white">
+                <div id="armyPhoto" class="inner-circle" style="border-color: white">
+                  <div class="inner-circle2" style="border-color: white">
+                    <!--div class="badge">
+                      <h1></h1>
+                    </div-->
+                    <img src="resources/ProfilePhotos/photoFrame.png" alt="Profile_Photo" style="height: 145px; width:140px; margin-top: -32px; margin-left: -25px;">
+                    <img id="profilePhoto" onclick="document.getElementById('id09').style.display='block'" title="View/ Change Photo" src="resources/ProfilePhotos/Default.Photo.jpg" alt="Profile_Photo" style="cursor: pointer; height: 96px; width:96px; margin-top: -170px; margin-left: -2px;">
+                  </div>
+                </div>
+              </div>
+
+              <!--input id="btn-Preview-Image" type="button" value="Preview"/>
+              <a id="btn-Convert-Html2Image" href="#">Download</a>
+              <div style="display: none;" id="previewImage">
+              </div-->
+  
+              <div style="background-color: white; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; float: left; width: 800px; height: 250px; margin-top: -73px;">
+                <div style="margin-top: 60px; margin-left: 3%;">
+                  <div style="float: left; width: 550px;">
+                    <span id="fullName" style="font-size: 18pt;"><i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i></span><br>
+                    <span id="armyRank" style="font-size: 14pt; color: grey;"><i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i></span><br>
+                    <div id="armyProgress" class="progressBar" style="float: left; width: 300px;">
+                      <div id="armyBar" class="tooltip"></div>
+                      <!--span id="toolTip" class="tooltiptext"></span-->
+                   </div>
+                   <div style="font-size: 9pt; font-style: italic; color: orange; margin-left: 50px; margin-top: 12px;">&nbsp;<span id="barTitle"></span></div><br>
+                    <span id="totPoints" style="font-size: 24pt;"><i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i></span><span style="color: grey;"> points</span>
+                  </div>
+                  <div style="width: 200px; float: left; margin-left: 0px; margin-top: 0px; text-align: right; padding-top: 50px; font-size: 11pt;">
+                    <div class="btns" onclick="document.getElementById('id01').style.display='block'" style="float: right;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Claim Points</div>
+                    <br><br><div class="btns" onclick="document.getElementById('id05').style.display='block'" style="float: right;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Join a COP</div>
+                    <br><br><a href="http://wapp-bny.nlng.net/digitalarmy/league.html"><div class="btns" style="float: right;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Leaderboard</div></a>
+                  </div>                
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius: 15px; background-color: white; width: 800px; height: 180px; margin-top: 10px;">
+            <div style="margin-left: 3%;">
+              <div style="width: 750px;">
+                <div style="float: left;">Achievements</div>
+                <div onclick="document.getElementById('id02').style.display='block'" style="float: right; color: blue; cursor: pointer;"><u>More Details</u></div>
+              </div><br>
+              <span id="achieveList">
+                <i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i>
+              </span>
+            </div>
+          </div>
+          <div style="border-radius: 15px; background-color: white; width: 800px; height: 200px; margin-top: 15px;">
+            <div style="margin-left: 3%;">
+              <div style="width: 750px;">
+                <div style="float: left;">Ranking</div>
+                <div onclick="document.getElementById('id03').style.display='block'" style="float: right; color: blue; cursor: pointer;"><u>More Details</u></div>
+              </div><br>
+              <span id="rankList">
+                <i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <div style="width: 300px; height: 1000px; border: 0px solid black; float: left; margin-left: 15px;">
+          <div style="border-radius: 15px; background-color: white; width: 300px; height: 150px; margin-top: 0px;">
+            <div style="margin-left: 3%;">
+              <div>Member of:</div>
+              <div id="memberList">
+                <i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius: 15px; background-color: white; width: 300px; height: 150px; margin-top: 15px;">
+            <div style="margin-left: 3%;">
+              <div>Recent Activities</div>
+              <div style="font-size: 10pt;">
+                <span id="recentAct">
+                  <i class="fas fa-spinner fa-pulse" style="font-size: 12pt;"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div style="border-radius: 15px; background-color: white; width: 300px; height: 260px; margin-top: 15px;">
+            <div style="margin-left: 3%;">
+              <div>Top Achievers for last week</div>
+              <div style="font-size: 10pt;">
+                <i class="fas fa-star" style="color: gold;"></i><span style="color: grey; margin-left: 5px;">David Enweluzor</span><br>
+                <i><span style="color: green; font-size: 9pt; float: left; margin-left: 20px;">Earned additonal 11 points</span></i><br><br>
+                
+                <i class="fas fa-star" style="color: gold;"></i><span style="color: grey; margin-left: 5px;">Amaluddin Yusoff</span><br>
+                <i><span style="color: green; font-size: 9pt; float: left; margin-left: 20px;">Earned additonal 10 points</span></i><br><br>
+
+                <i class="fas fa-star" style="color: gold;"></i><span style="color: grey; margin-left: 5px;">Ogochukwu Ejeh</span><br>
+                <i><span style="color: green; font-size: 9pt; float: left; margin-left: 20px;">Earned additonal 7 points</span></i><br><br>
+                
+                <!-- <i class="fas fa-star" style="color: gold;"></i><span style="color: grey; margin-left: 5px;">Anthony Coker</span><br>
+                <i><span style="color: green; font-size: 9pt; float: left; margin-left: 20px;">Earned additonal 12 points</span></i><br><br> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--div id="ladderBtn1" style="width: 80px; height: 50px; border: 0px solid black; float: left; margin-left: 15px; font-size: 9pt; display: none;">
+          <div onclick="expLadder()" title="Expand Ladder" style="width: 15px; height: 50px; background-color: grey; float: left; border-top-right-radius: 5px; border-bottom-right-radius: 5px; cursor: pointer;"></div>
+          <div style="margin-left: 10px; margin-top: 5px; color: black; font-weight: bold;">Progress<br>Ladder</div>
+        </div-->
+
+        <div id="ladder" style="border-radius: 15px; background-color: white; width: 520px; height: 590px; float: left; margin-left: 15px;">
+          <!--div id="ladderBtn2" onclick="colLadder()" title="Collapse Ladder" style="display: block; margin-top: 40px; margin-left: 15px; width: 15px; height: 50px; background-color: silver; float: left; border-top-left-radius: 5px; border-bottom-left-radius: 5px; cursor: pointer;"></div-->
+          <div style="width: 480px; height: 550px; border: 0px solid black; float: left; margin-left: 20px; font-size: 9pt; display: block;"><br>
+            <div style="font-size: 12pt; color: black; font-weight: bold; float: left;">Progress Ladder</div>
+            <div style="font-size: 9pt; font-style: italic; color: orange; margin-left: 0px; margin-top: 2px; text-align: right; width: 480px;"><span id="barTitle2"></span></div><br>
+            <div style="width: 475px; height: 45px;">
+              <div id="step10" style="float: left; width: 70px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div style="float: left; margin-left: 5px; color: orange;"></div>
+                <div style="text-align: right; padding-right: 5px;">Lieut. Gen.</div>
+              </div>
+              <span id="pos10" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>          
+            <div style="width: 475px; height: 45px;">
+              <div id="step9" style="float: left; width:110px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div style="text-align: right; padding-right: 5px;">Major General</div>
+              </div>
+              <span id="pos9" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step8" style="float: left; width:150px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div style="float: left; margin-left: 5px; color: orange;"></div>
+                <div style="text-align: right; padding-right: 5px;">Brigadier General</div>
+              </div>
+              <span id="pos8" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step7" style="float: left; width:190px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here7" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Colonel</div>
+              </div>
+              <span id="pos7" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step6" style="float: left; width:230px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here6" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Major</div>
+              </div>
+              <span id="pos6" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step5" style="float: left; width:270px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here5" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Captain</div>
+              </div>
+              <span id="pos5" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step4" style="float: left; width:310px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here4" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Lieutenant</div>
+              </div>
+              <span id="pos4" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step3" style="float: left; width:350px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here3" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Sergeant</div>
+              </div>
+              <span id="pos3" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step2" style="float: left; width:390px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: grey; color: white;">
+                <div id="here2" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Corporal</div>
+              </div>
+              <span id="pos2" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 475px; height: 45px;">
+              <div id="step1" style="float: left; width:430px; height: 45px; border: 1px solid white; padding-top: 12px; background-color: blue; color: white;">
+                <div id="here1" style="float: left; margin-left: 5px; color: orange; display: none;">You are here</div>
+                <div style="text-align: right; padding-right: 5px;">Private</div>
+              </div>
+              <span id="pos1" style="display: none;">&nbsp;<i style="font-size: 30pt; color: black;" class="fas fa-walking fa-flip-horizontal"></i></span>
+            </div>
+            <div style="width: 470px; height: 10px; background-color: silver; border: 1px solid white;"></div>
+          </div>
+        
+        </div>
+
+        
+      </div>
+
+      <div id="id03" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 610px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Ranking</span>
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div>          
+          <div id="commSect">
+            <div style="font-size: 8pt;">
+              <div style="margin-left: 10px; height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: white; color: #54614F;">
+                Community
+              </div>
+              <div onclick="document.getElementById('commSect').style.display='none'; document.getElementById('toolSect').style.display='block'" style="height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: #54614F; color: white; cursor: pointer;" onmouseover="this.style.background = 'white'; this.style.color = '#54614F'" onmouseout="this.style.background = '#54614F'; this.style.color = 'white'">
+                Digital Tool
+              </div>
+            </div>
+            <br><br>
+            <div style="margin-left: 20px;">
+              <span>Select Community: </span>
+              <span id="commOptions"></span>
+            </div>
+            <div style="margin-left: 20px; width: 580px;">
+              <table id="memberRank"></table>
+            </div>
+          </div>
+          <div id="toolSect" style="display: none;">
+            <div style="font-size: 8pt;">
+              <div onclick="document.getElementById('commSect').style.display='block'; document.getElementById('toolSect').style.display='none'" style="margin-left: 10px; height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: #54614F; color: white; cursor: pointer;" onmouseover="this.style.background = 'white'; this.style.color = '#54614F'" onmouseout="this.style.background = '#54614F'; this.style.color = 'white'">
+                Community
+              </div>
+              <div style="height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: white; color: #54614F;">
+                Digital Tool
+              </div>
+            </div>
+            <br><br>
+            <div style="margin-left: 20px;">
+              <span>Select Digital Tool: </span>
+              <span id="toolOptions"></span>
+            </div>
+            <div style="margin-left: 20px; width: 580px;"><br>
+              <table id="toolRank"></table>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="id02" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 840px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Achievements</span>
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div>
+          <div id="claimed">
+            <div style="font-size: 8pt;">
+              <div style="margin-left: 10px; height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: white; color: #54614F;">
+                Claimed
+              </div>
+              <div onclick="document.getElementById('claimed').style.display='none'; document.getElementById('pending').style.display='block'" style="height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: #54614F; color: white; cursor: pointer;" onmouseover="this.style.background = 'white'; this.style.color = '#54614F'" onmouseout="this.style.background = '#54614F'; this.style.color = 'white'">
+                Pending
+              </div>
+            </div>
+            <br>
+            <div style="margin-left: 20px; width: 800px;">
+              <div style="float: right; margin-right: 20px;">Total Points Earned: <span id="totPoints2"></span></div><br>
+              <table id="achieveDetails"></table>
+            </div>
+          </div>
+          <div id="pending" style="display: none;">
+            <div style="font-size: 8pt;">
+              <div onclick="document.getElementById('claimed').style.display='block'; document.getElementById('pending').style.display='none'" style="margin-left: 10px; height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: #54614F; color: white; cursor: pointer;" onmouseover="this.style.background = 'white'; this.style.color = '#54614F'" onmouseout="this.style.background = '#54614F'; this.style.color = 'white'">
+                Claimed
+              </div>
+              <div style="height: 25px; width: 100px; transform: skew(-10deg); border: 1px solid white; text-align: center; float: left; padding-top: 5px; background-color: white; color: #54614F;">
+                Pending
+              </div>
+            </div>
+            <br>
+            <div style="margin-left: 20px; width: 800px;"><br>
+              <table id="achieveDetails2"></table>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="id01" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 430px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Claim Points</span>
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <table border="0">
+              <tr>
+                <td><span>Achievement: </span></td>
+                <td>
+                  <select id="Achievement" onchange="show01()">
+                    <option value="">Make a Selection</option>
+                    <option value="Capability Building">Capability Building</option>
+                    <option value="Competitions">Competitions</option>
+                    <option value="Digital Solution Delivery">Digital Solution Delivery</option>
+                    <!--option value="Event Attendance">Event Attendance</option-->
+                    <option value="Influencer of the Week">Influencer of the Week</option>
+                    <option value="Organizing of Event">Organizing of Event</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r01" style="display: none;">
+                <td>Course Completed: </td>
+                <td><input id="Course"></td>
+              </tr>
+              <tr id="r02" style="display: none;">
+                <td>Competition Won: </td>
+                <td>
+                  <select id="Competition">
+                    <option value="">Make a Selection</option>
+                    <option value="Hackathon">Hackathon</option>
+                    <option value="Quiz">Quiz</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r03" style="display: none;">
+                <td>Project Title: </td>
+                <td><input id="Project"></td>
+              </tr>
+              <tr id="r04" style="display: none;">
+                <td>Event Attended: </td>
+                <td>
+                  <select id="Event">
+                    <option value="">Make a Selection</option>
+                    <option value="Lunch & Learn">Lunch & Learn</option>
+                    <option value="CodeFest">CodeFest</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r05" style="display: none;">
+                <td>Role: </td>
+                <td>
+                  <select id="Role">
+                    <option value="">Make a Selection</option>
+                    <option value="">Active Organizing Committee</option>
+                    <option value="">Coordinator/ Leader of Event</option>
+                    <option value="">Presented a Topic</option>
+                    <option value="">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r14" style="display: none;">
+                <td>Digital Tool Used: </td>
+                <td>
+                  <select id="Digital_Tool">
+                    <option value="">Make a Selection</option>
+                    <option value="A# .NET">A# .NET</option>
+                    <option value="C++">C++</option>
+                    <option value="C# (C Sharp)">C# (C Sharp)</option>
+                    <option value="C3">C3</option>
+                    <option value="Cisco">Cisco</option>
+                    <option value="dBase">dBase</option>
+                    <option value="Excel">Excel</option>
+                    <option value="Fortran">Fortran</option>
+                    <option value="Google Apps Script">Google Apps Script</option>
+                    <option value="HTML">HTML</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Matlab">Matlab</option>
+                    <option value="Pascal">Pascal</option>
+                    <option value="PHP">PHP</option>
+                    <option value="PI Vision">PI Vision</option>
+                    <option value="Power Apps">Power Apps</option>
+                    <option value="Power BI">Power BI</option>
+                    <option value="Python">Python</option>
+                    <option value="SQL">SQL</option>
+                    <option value="Ultimus">Ultimus</option>
+                    <option value="VBA">VBA</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r06" style="display: none;">
+                <td>Platform: </td>
+                <td>
+                  <select id="Platform">
+                    <option value="">Make a Selection</option>
+                    <option value="">Yammer</option>
+                    <option value="">WhatsApp</option>
+                    <option value="">Telegram</option>
+                    <option value="">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id="r07">
+                <td>Community: </td>
+                <td>
+                  <select id="Community">
+                    <option value="">Make a Selection</option>
+                    <option value="Digital Army">Digital Army</option>
+                    <option value="Agile COP">Agile COP</option>
+                    <option value="Analytics COP">Analytics COP</option>
+                    <!-- <option value="DCC">DCC</option> -->
+                    <!-- <option value="Hackathon">Hackathon</option> -->
+                    <option value="ICC">ICC</option>
+                    <!--option value="Power Platform COP">Power Platform COP</option-->
+                  </select>
+                </td>
+              </tr>
+              <tr id="r08" style="display: none;">
+                <td>Details: </td>
+                <td><input id="Details"></td>
+              </tr>
+              <tr id="r10">
+                <td>Date of Achievement: </td>
+                <td><input id="Date_Achieve" type="date"></td>
+              </tr>
+              <tr id="r11">
+                <td>Description: </td>
+                <td><textarea id="Achievement_Desc" rows="2" cols="25" type="text"></textarea></td>
+              </tr>
+              <!--tr id="r12">
+                <td>Attach Evidence: </td>
+                <td><input id="sortpicture" type="file" name="sortpic" style="font-size: 8pt;"></td>
+              </tr-->
+              <tr>
+                <td><br></td>
+                <td></td>
+              </tr>
+              <tr id="r13">
+                <td></td>
+                <td>
+                  <div class="btns" onclick="submitClaim()" style="float: right; margin-right: 10px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Submit</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="id07" class="modal" style="display: none;"> 
+        <div name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 400px;">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Attach Evidence</span>
+            <!--span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Form">&times;</span-->
+          </div><br>
+          <div style="margin-left: 10px;">
+            <span>Kindly attach a snapshot of this achievement as evidence (if applicable)</span><br><br>
+            <form action="http://bny-s-560/DigitalArmy/php/uploadFile.php" method="post" enctype="multipart/form-data">
+              <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+              <input class="btns" type="submit" value="Upload File" name="submit">
+              <a href="http://bny-s-560/digitalarmy/index.html"><input class="btns" style="background-color: orange; border: 3px solid orange;" value="Cancel Upload"></a>
+            </form>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div id="id09" class="modal" style="display: none;"> 
+        <div name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 300px;">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Profile Photo</span>
+            <span onclick="document.getElementById('id09').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 80px;">
+            <form>
+              <!--img src="resources/ProfilePhotos/photoFrame.png" alt="Profile_Photo" style="height: 145px; width:140px; margin-top: -32px; margin-left: -25px;"-->
+              <img id="profilePhoto2" src="resources/ProfilePhotos/Default.Photo.jpg" alt="Photo" style="height: 96px; width:96px; margin-top: 0px; margin-left: 20px;">
+              <br><br>
+              <div class="btns" onclick="document.getElementById('id09').style.display='none'; document.getElementById('id08').style.display='block'">Change Photo</div>
+            </form>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div id="id04" class="modal">
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 440px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id04').style.display='none'" id="close1" class="close" title="Close Form" style="display: none;">&times;</span>
+            <span id="regTxt" style="color: white; font-size:12pt;">&nbsp;Register Profile</span>
+            <span id="editTxt" style="display: none; color: white; font-size:12pt;">&nbsp;Edit Profile</span>
+            <span id="profTxt" style="color: white; font-size:12pt; display: none;">&nbsp;Profile</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <span id="confirmTxt">Kindly confirm your details below:</span>
+            <table border="0">
+              <tr>
+                <td>
+                  <div id="editBtn" class="btns" onclick="editProfile()" style="height: 20px; width: 100px; font-size: 9pt; background-color: orange; border: 3px solid orange; display: none;" onmouseover="this.style.background = 'none'; this.style.color = 'orange'" onmouseout="this.style.background = 'orange'; this.style.color = 'white'">Edit</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>First Name: </td>
+                <td id="fName1"><input id="firstName2" style="width: 200px;"></td>
+                <td id="fName2" style="display: none;"><span id="firstName3"></span></td>
+              </tr>
+              <tr>
+                <td>Last Name: </td>
+                <td id="lName1"><input id="lastName2" style="width: 200px;"></td>
+                <td id="lName2" style="display: none;"><span id="firstName3"></span></td>
+              </tr>
+              <tr>
+                <td>Email Address: </td>
+                <td id="mail1"><input id="eMail2" style="width: 250px;"></td>
+                <td id="mail2" style="display: none;"><span id="firstName3"></span></td>
+              </tr>
+              <tr>
+                <td><br></td>
+                <td><br></td>
+              </tr>
+              <tr>
+                <td>
+                  <div id="phoBtn" class="btns" onclick="changePhoto()" style="background-color: orange; border: 3px solid orange; display: none;" onmouseover="this.style.background = 'none'; this.style.color = 'orange'" onmouseout="this.style.background = 'orange'; this.style.color = 'white'">Change Photo</div>
+                </td>
+                <td id="sumBtn" style="float: right;">
+                  <div class="btns" onclick="submitProfile()" style="float: right; margin-right: 0px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Submit</div>
+                </td>
+                <td id="updBtn" style="float: right; display: none;">
+                  <div class="btns" onclick="updateProfile()" style="float: right; margin-right: 0px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Update</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="id08" class="modal" style="display: none;"> 
+        <div name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 400px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Attach Profile Photo</span>
+            <!--span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Form">&times;</span-->
+          </div><br>
+          <div style="margin-left: 10px;">
+            <form action="http://bny-s-560/DigitalArmy/php/uploadPhoto.php" method="post" enctype="multipart/form-data">
+              <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+              <input class="btns" type="submit" value="Upload Photo" name="submit">
+            </form>
+          </div>
+          <br><br>
+        </div>
+      </div>
+
+      <div id="id05" class="modal"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 300px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;Join a COP</span>
+            <span onclick="document.getElementById('id05').style.display='none'" class="close" title="Close Form">&times;</span>
+          </div><br>
+          <div style="margin-left: 10px;">
+            <table border="0">
+              <tr>
+                <td>Community: </td>
+                <td>
+                  <select id="Community3">
+                    <option value="">Make a Selection</option>
+                    <!--option value="Digital Army">Digital Army</option-->
+                    <option value="Agile COP">Agile COP</option>
+                    <option value="Analytics COP">Analytics COP</option>
+                    <!--option value="DCC">DCC</option>
+                    <option value="Hackathon">Hackathon</option-->
+                    <option value="ICC">ICC</option>
+                    <!--option value="Power Platform COP">Power Platform COP</option-->
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><br></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td style="float: right;">
+                  <div class="btns" onclick="joinComm()" style="float: right; margin-right: 0px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Submit</div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <br>
+        </form>
+      </div>
+
+      <div id="id06" class="modal" style="display: none;"> 
+        <form name="newForm4" class="modal-content animate" style="font-family: Futura Md BT; height: auto; width: 420px;" action="javascript:void(0);">
+          <div class="imgcontainer">
+            <span style="color: white; font-size:12pt;">&nbsp;User not Found!</span>
+            <!--span onclick="document.getElementById('id06').style.display='none'" class="close" title="Close Form">&times;</span-->
+          </div><br>
+          <div style="margin-left: 10px;">
+            <span>You are not a registered member of the Digital Army.<br>Kindly click below to register</span><br><br>
+            <div class="btns" onclick="document.getElementById('id06').style.display='none'; document.getElementById('id04').style.display='block'" style="float: right; margin-right: 20px;" onmouseover="this.style.background = 'none'; this.style.color = 'green'" onmouseout="this.style.background = 'green'; this.style.color = 'white'">Register</div>
+          </div>
+          <br><br>
+        </form>
+      </div>
+
+      <div id="loading" style="position:fixed; top:0;left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7);margin:auto;">
+        <div  class="loader" style="text-align:center;margin:auto; margin-top:450px;"></div>
+      </div>
+
+    <script src="scripts/digArmy.js"></script>
+    <script src="scripts/getData.js"></script>
+    <script src="scripts/postData.js"></script>
+    <script src="scripts/sendMail.js"></script>
+  </body>
+</html>
